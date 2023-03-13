@@ -22,44 +22,7 @@ class MobileRobotTroque(Ui_MainWindow):
 
         super().setupUi(MainWindow)
         self.pushButton_calculate.clicked.connect(self.calculate)
-        const =2 * 3.1416 * 1000
-        self.license(const)
-
-    # def __init__(self,g,acc):
-    #     # self.g = 9.8
-    #     # self.acc = 0.25
-
-    @staticmethod
-    def license(key):
-        CONST = key
-
-        # online check
-        data = []
-        with  req.urlopen('http://just-the-time.appspot.com/') as response:
-            data = response.read()
-        temp = str(data)
-        year = temp[2:6]
-        month = temp[7:9]
-        date = temp[10:12]
-        encryption_online = int((int(month) * CONST) + (int(year) * CONST))
-        encryption_online = str(encryption_online)
-
-        encryption_offline = int((int(6) * CONST) + (int(year) * CONST))
-        encryption_offline = str(encryption_offline)
-
-
-        if encryption_online <= encryption_offline:
-            val_pass = True
-            return val_pass
-        else:
-
-            msg = QMessageBox()
-            msg.setWindowTitle("License Tool")
-            msg.setText("Please update the license part!")
-            x = msg.exec_()  # this will show our messagebox
-            sys.exit()
-            val_pass2 = False
-            return val_pass2
+           
 
     def calculate(self):
         g = 9.81
